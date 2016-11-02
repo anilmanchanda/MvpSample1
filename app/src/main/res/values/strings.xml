@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NewMvpSample</string>
+    <string name="username">Enter Username</string>
+    <string name="password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="username_empty">Username is empty</string>
+    <string name="password_empty">Password is empty</string>
+</resources>
