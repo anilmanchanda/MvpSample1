@@ -1,12 +1,15 @@
 package login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.anil.newmvpsample.MainActivity;
 import com.anil.newmvpsample.R;
 
 /**
@@ -14,7 +17,7 @@ import com.anil.newmvpsample.R;
  * on 11/2/16.
  */
 
-public class LoginActivity extends AppCompatActivity implements LoginPresenterContract.view {
+public class LoginActivity extends AppCompatActivity implements LoginPresenterContract.LoginView {
 
     private Button mBtnLogin;
     private AppCompatEditText mEtUsername, mEtPassword;
@@ -39,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
         });
     }
 
-    // method of view interface in contract.
+    // method of LoginView interface in contract.
 
     @Override
     public String getUsername() {
@@ -61,4 +64,14 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
         mEtPassword.setError(getString(resId));
     }
 
+    @Override
+    public void showNotAbleToLogin() {
+        Toast.makeText(getApplicationContext(), getString(R.string.login_error), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void startMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

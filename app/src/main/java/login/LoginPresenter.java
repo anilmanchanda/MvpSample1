@@ -8,10 +8,10 @@ import com.anil.newmvpsample.R;
 
 public class LoginPresenter {
 
-    private final LoginPresenterContract.view view;
+    private final LoginPresenterContract.LoginView view;
     private final LoginApi api;
 
-    public LoginPresenter(LoginPresenterContract.view loginView, LoginApi loginApi) {
+    public LoginPresenter(LoginPresenterContract.LoginView loginView, LoginApi loginApi) {
         this.view = loginView;
         this.api = loginApi;
     }
@@ -31,5 +31,12 @@ public class LoginPresenter {
             view.showErrorWhenPasswordIsEmpty(R.string.password_empty);
             return;
         }
+
+        if (api.authenticate(username, password)) {
+            view.startMainActivity();
+            return;
+        }
+
+        view.showNotAbleToLogin();
     }
 }
