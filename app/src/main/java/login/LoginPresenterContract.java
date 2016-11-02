@@ -8,13 +8,13 @@ import android.support.annotation.StringRes;
 
 /**
  * class used to give all the imformation to be used
- * for communication between view, models and events
+ * for communication between LoginView, models and events
  * in this app
  */
 
 public class LoginPresenterContract {
 
-    public interface view{
+    public interface LoginView {
         String getUsername();
 
         void showErrorWhenUsernameIsEmpty(@StringRes int resId);
@@ -22,5 +22,9 @@ public class LoginPresenterContract {
         String getPassword();
 
         void showErrorWhenPasswordIsEmpty(@StringRes int resId);
+
+        void showNotAbleToLogin();
+
+        void startMainActivity();
     }
 }
